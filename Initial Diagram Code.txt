@@ -1,0 +1,41 @@
+@startuml
+start
+:User visits Website;
+:Show Login Page;
+if (Is user registered?) then (Yes)
+    :User Logs In;
+    :Validate Credentials (Backend);
+    if (Credentials Valid?) then (Yes)
+        :Redirect to Dashboard;
+    else (No)
+        :Show Login Error;
+        stop
+    endif
+else (No)
+    :Show Register Page;
+    :User Fills Registration Form;
+    :Submit Form to Backend;
+    :Validate and Store in Database;
+    :Show Registration Success;
+    :Redirect to Login Page;
+endif
+
+:User Browses Credit Cards;
+:Fetch Credit Card Data (Backend);
+:Show Available Credit Cards & Offers;
+:User Applies for Credit Card;
+:Submit Application to Bank System;
+:Bank Verifies User Details;
+if (Application Approved?) then (Yes)
+    :Send Approval Notification;
+    :Initiate Credit Card Dispatch;
+    :Delivery System Processes Shipment;
+    :Send Tracking Details to User;
+    :Card Delivered;
+else (No)
+    :Send Rejection Notification;
+endif
+
+:User Logs Out;
+stop
+@enduml
